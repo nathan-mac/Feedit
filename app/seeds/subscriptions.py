@@ -25,6 +25,6 @@ def seed_subscriptions():
     db.session.commit()
 
 
-def undo_posts():
-    db.session.execute("TRUNCATE posts RESTART IDENTITY CASCADE;")
+def undo_subscriptions():
+    db.session.execute("TRUNCATE subscriptions RESTART IDENTITY CASCADE;")
     db.session.commit()

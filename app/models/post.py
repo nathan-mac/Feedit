@@ -23,6 +23,7 @@ class Post(db.Model):
     )
     subfeeditId = db.Column(
         db.Integer,
+        db.ForeignKey("subfeedits.id"),
         nullable=False
     )
     time = db.Column(
