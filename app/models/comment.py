@@ -1,5 +1,6 @@
 from typing import Text
 from .db import db
+from sqlalchemy.sql import func
 
 
 class Comment(db.Model):
@@ -25,6 +26,7 @@ class Comment(db.Model):
     )
     time = db.Column(
         db.DateTime,
+        default=func.now(),
         nullable=False
     )
 

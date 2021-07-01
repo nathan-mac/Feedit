@@ -1,4 +1,5 @@
 from .db import db
+from sqlalchemy.sql import func
 
 
 class Post(db.Model):
@@ -24,6 +25,12 @@ class Post(db.Model):
         db.Integer,
         nullable=False
     )
+    time = db.Column(
+        db.DateTime,
+        default=func.now(),
+        nullable=False
+
+    )
 
     user = db.relationship("User")
     subfeedit = db.relationship("Subfeedit")
@@ -34,5 +41,6 @@ class Post(db.Model):
             "title": self.title,
             "content": self.content,
             "userId": self.userId,
-            "subfeeditId": self.subfeeditId
+            "subfeeditId": self.subfeeditId,
+            "time": self.time
         }
