@@ -3,10 +3,11 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
-import NavBar from "./components/NavBar";
+import NavBar from "./components/NavBar/index";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
-import UsersList from "./components/UsersList";
-import User from "./components/User";
+import UsersList from "./components/UsersList/index";
+import User from "./components/User/index";
+import Home from "./components/Home/index";
 import { authenticate } from "./store/session";
 
 function App() {
@@ -19,7 +20,7 @@ function App() {
       await dispatch(authenticate());
       setLoaded(true);
     })();
-  }, []);
+  }, [dispatch]);
 
   if (!loaded) {
     return null;
@@ -42,7 +43,7 @@ function App() {
           <User />
         </ProtectedRoute>
         <ProtectedRoute path="/" exact={true} >
-          <h1>My Home Page</h1>
+          <Home />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
