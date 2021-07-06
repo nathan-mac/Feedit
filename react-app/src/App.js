@@ -8,6 +8,8 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList/index";
 import User from "./components/User/index";
 import Home from "./components/Home/index";
+import Post from "./components/Post/index";
+import Subfeedit from "./components/Subfeedit/index";
 import { authenticate } from "./store/session";
 
 function App() {
@@ -42,6 +44,12 @@ function App() {
         <ProtectedRoute path="/users/:userId" exact={true}>
           <User />
         </ProtectedRoute>
+        <Route path="/:subfeeditName" exact={true}>
+          <Subfeedit />
+        </Route>
+        <Route path="/:subfeeditName/:postId" exact={true}>
+          <Post />
+        </Route>
         <ProtectedRoute path="/" exact={true} >
           <Home />
         </ProtectedRoute>

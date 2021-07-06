@@ -30,7 +30,6 @@ class Post(db.Model):
         db.DateTime,
         default=func.now(),
         nullable=False
-
     )
 
     user = db.relationship("User")

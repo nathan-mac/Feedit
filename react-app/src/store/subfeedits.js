@@ -9,11 +9,12 @@ export const getAllSubfeedits = () => async (dispatch) => {
     const response = await fetch("/api/subfeedits/")
     const data = await response.json()
     dispatch(allSubfeedits(data))
-    return data
+    return data;
 }
 
 const initialState = {
-    subfeedits: {}
+    subfeedits: {},
+    subfeedit: {}
 }
 
 export default function reducer(state = initialState, action) {
@@ -21,11 +22,14 @@ export default function reducer(state = initialState, action) {
 
     switch (action.type) {
         case ALL_SUBFEEDITS:
-            newState = { subfeedits: {} }
+            newState = {
+                subfeedits: {},
+                subfeedit: state.subfeedit
+            }
             action.payload.subfeedits.forEach(subfeedit => {
                 newState.subfeedits[subfeedit.id] = subfeedit
             })
-            return newState
+            return newState;
         default:
             return state;
     }
