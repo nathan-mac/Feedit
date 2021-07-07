@@ -10,7 +10,7 @@ def subfeedits():
     return {"subfeedits": [subfeedit.to_dict() for subfeedit in subfeedits]}
 
 
-@subfeedit_routes.route("/<int:id>")
-def subfeedit(id):
-    subfeedit = Subfeedit.query.get(id)
-    return subfeedit.to_dict()
+@subfeedit_routes.route("/<string:name>")
+def subfeedit(name):
+    subfeedit = Subfeedit.query.filter(Subfeedit.name == name)
+    return {"subfeedit": subfeedit.to_dict()}

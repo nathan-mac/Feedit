@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getAllPosts } from "../../store/posts";
+import { getOnePost } from "../../store/posts";
 
 function Post() {
 
@@ -9,11 +9,10 @@ function Post() {
     const params = useParams();
 
     useEffect(() => {
-        dispatch(getAllPosts())
+        dispatch(getOnePost(parseInt(params.postId)))
     }, [dispatch])
 
-    const posts = useSelector((state) => state.posts.posts);
-    const post = posts[parseInt(params.postId)];
+    const post = useSelector((state) => state.posts.post);
 
     console.log(post);
 

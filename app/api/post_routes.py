@@ -1,6 +1,10 @@
-from flask import Blueprint, jsonify
-from flask_login import login_required
-from app.models import Post
+from flask import Blueprint, jsonify, request
+from flask_login import login_required, current_user
+from app.api.auth_routes import validation_errors_to_error_messages
+from app.models import Post, User
+from app.forms import PostForm
+from app import db
+import datetime
 
 post_routes = Blueprint("posts", __name__)
 
@@ -15,4 +19,24 @@ def posts():
 @post_routes.route("/<int:id>")
 def post(id):
     post = Post.query.get(id)
-    return post.to_dict()
+    return {"post": post.to_dict()}
+
+
+@post_routes.route('/new-post', methods=["POST"])
+@login_required
+def new_post():
+    user = User.query.get(current_user.id)
+    form = PostForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        post = Post(
+            title=form.data["title"],
+            content=form.data["content"],
+            userId=user.id,
+            subfeeditId=form.data["subfeeditId"],
+            time=datetime.datetime.now()
+        )
+        db.session.add(post)
+        db.session.commit()
+        return post.to_dict()
+    return {"errors": validation_errors_to_error_messages(form.errors)}, 401
