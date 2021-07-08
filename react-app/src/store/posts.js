@@ -105,12 +105,9 @@ export default function reducer(state = initialState, action) {
     switch (action.type) {
         case ALL_POSTS:
             newState = {
-                posts: {},
+                posts: action.payload.posts,
                 post: state.post
             }
-            action.payload.posts.forEach(post => {
-                newState.posts[post.id] = post
-            })
             return newState;
         case ONE_POST:
             newState = {

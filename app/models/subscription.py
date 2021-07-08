@@ -21,17 +21,14 @@ class Subscription(db.Model):
 
     user = db.relationship(
         "User",
-        backref=db.backref(
-            "subscriptions",
-            cascade="all, delete-orphan"
-        )
+        backref="subscriptions",
+        uselist=False
     )
+
     subfeedit = db.relationship(
         "Subfeedit",
-        backref=db.backref(
-            "subscriptions",
-            cascade="all, delete-orphan"
-        )
+        backref="subscriptions",
+        uselist=False
     )
 
     def to_dict(self):

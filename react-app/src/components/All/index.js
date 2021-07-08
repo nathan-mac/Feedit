@@ -3,10 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllPosts } from "../../store/posts";
 import { getAllSubfeedits } from "../../store/subfeedits";
 
-const Subscribed = () => {
+const All = () => {
 
     const dispatch = useDispatch();
-    const user = useSelector((state) => state.session.user)
 
     useEffect(() => {
         dispatch(getAllPosts())
@@ -31,4 +30,4 @@ const Subscribed = () => {
     )
 }
 
-export default Subscribed;
+export default All;

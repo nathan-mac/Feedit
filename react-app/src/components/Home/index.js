@@ -1,5 +1,5 @@
 import React from "react"
-import All from "./AllPosts"
+import AllPosts from "./AllPosts"
 import Subscribed from "./SubscribedPosts"
 import { useSelector } from "react-redux"
 
@@ -13,7 +13,7 @@ const Home = () => {
         )
     } else {
         return (
-            <All />
+            <AllPosts />
         )
     }
 }

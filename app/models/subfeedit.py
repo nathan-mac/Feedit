@@ -1,5 +1,19 @@
 from .db import db
 
+# subscriptions = db.Table(
+#     "subscriptions",
+#     db.Column(
+#         db.Integer,
+#         db.ForeignKey("users.id"),
+#         nullable=False
+#     ),
+#     db.Column(
+#         db.Integer,
+#         db.ForeignKey("subfeedits.id"),
+#         nullable=False
+#     )
+# )
+
 
 class Subfeedit(db.Model):
     __tablename__ = "subfeedits"
@@ -11,8 +25,6 @@ class Subfeedit(db.Model):
     name = db.Column(
         db.String(40)
     )
-
-    users = db.relationship("User", secondary="subscriptions")
 
     def to_dict(self):
         return {

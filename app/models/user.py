@@ -25,8 +25,6 @@ class User(db.Model, UserMixin):
         nullable=False
     )
 
-    subfeedits = db.relationship("Subfeedit", secondary="subscriptions")
-
     @property
     def password(self):
         return self.hashed_password
@@ -34,6 +32,10 @@ class User(db.Model, UserMixin):
     @password.setter
     def password(self, password):
         self.hashed_password = generate_password_hash(password)
+
+    @property
+    def subfeedit(self):
+        return [s.subfeedit for s in self.subscriptions]
 
     def check_password(self, password):
         return check_password_hash(self.password, password)

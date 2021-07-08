@@ -7,6 +7,7 @@ import NavBar from "./components/NavBar/index";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList/index";
 import User from "./components/User/index";
+import All from "./components/All/index";
 import Home from "./components/Home/index";
 import Post from "./components/Post/index";
 import Subfeedit from "./components/Subfeedit/index";
@@ -50,6 +51,9 @@ function App() {
         <ProtectedRoute path="/users/:userId" exact={true}>
           <User />
         </ProtectedRoute>
+        <Route path="/all" exact={true}>
+          <All />
+        </Route>
         <Route path="/subfeedits" exact={true}>
           <SubfeeditList />
         </Route>

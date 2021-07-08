@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllPosts } from "../../store/posts";
 import { getAllSubfeedits } from "../../store/subfeedits";
 
-const All = () => {
+const AllPosts = () => {
 
     const dispatch = useDispatch();
 
@@ -30,4 +30,4 @@ const All = () => {
     )
 }
 
-export default All;
+export default AllPosts;
