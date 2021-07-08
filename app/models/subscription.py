@@ -19,8 +19,20 @@ class Subscription(db.Model):
         nullable=False
     )
 
-    user = db.relationship("User")
-    subfeedit = db.relationship("Subfeedit")
+    user = db.relationship(
+        "User",
+        backref=db.backref(
+            "subscriptions",
+            cascade="all, delete-orphan"
+        )
+    )
+    subfeedit = db.relationship(
+        "Subfeedit",
+        backref=db.backref(
+            "subscriptions",
+            cascade="all, delete-orphan"
+        )
+    )
 
     def to_dict(self):
         return {

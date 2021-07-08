@@ -10,11 +10,9 @@ function Post() {
 
     useEffect(() => {
         dispatch(getOnePost(parseInt(params.postId)))
-    }, [dispatch])
+    }, [dispatch, params.postId])
 
     const post = useSelector((state) => state.posts.post);
-
-    console.log(post);
 
     return (
         <>

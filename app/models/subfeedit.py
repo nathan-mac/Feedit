@@ -12,6 +12,8 @@ class Subfeedit(db.Model):
         db.String(40)
     )
 
+    users = db.relationship("User", secondary="subscriptions")
+
     def to_dict(self):
         return {
             "id": self.id,

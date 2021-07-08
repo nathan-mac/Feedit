@@ -1,13 +1,11 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
 import { getAllPosts } from "../../store/posts";
 import { getAllSubfeedits } from "../../store/subfeedits";
 
-function Subfeedit() {
+const All = () => {
 
     const dispatch = useDispatch();
-    const params = useParams();
 
     useEffect(() => {
         dispatch(getAllPosts())
@@ -21,18 +19,15 @@ function Subfeedit() {
         <>
             <h1>Posts:</h1>
             {Object.values(posts)?.map((post) => {
-                const name = subfeedits[post.subfeeditId]?.name;
-                const matched = name === params.subfeeditName;
+                const name = subfeedits[post.subfeeditId]?.name
                 return (
-                    matched ?
-                        <div key={post.id}>
-                            <a href={`/${name}/${post.id}`}>{post.title}</a>
-                        </div>
-                    : <></>
+                    <div key={post.id}>
+                        <a href={`/${name}/${post.id}`}>{post.title}</a>
+                    </div>
                 )
             })}
         </>
     )
 }
 
-export default Subfeedit;
+export default All;

@@ -25,6 +25,8 @@ class User(db.Model, UserMixin):
         nullable=False
     )
 
+    subfeedits = db.relationship("Subfeedit", secondary="subscriptions")
+
     @property
     def password(self):
         return self.hashed_password

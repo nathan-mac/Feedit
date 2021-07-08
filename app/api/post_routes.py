@@ -22,8 +22,8 @@ def post(id):
     return {"post": post.to_dict()}
 
 
-@post_routes.route('/new-post', methods=["POST"])
-@login_required
+@post_routes.route("/new-post", methods=["POST"])
+# @login_required
 def new_post():
     user = User.query.get(current_user.id)
     form = PostForm()
@@ -40,3 +40,24 @@ def new_post():
         db.session.commit()
         return post.to_dict()
     return {"errors": validation_errors_to_error_messages(form.errors)}, 401
+
+
+@post_routes.route("/edit-post", methods=["POST"])
+# @login_required
+def edit_post():
+    form = PostForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        post = Post.query.get(form.id)
+        db.session.delete(post)
+        db.session.commit()
+        return
+    return {"errors": validation_errors_to_error_messages(form.errors)}, 401
+
+
+@post_routes.route("/delete/<int:id>")
+def delete_post(id):
+    post = Post.query.get(id)
+    db.session.delete(post)
+    db.session.commit()
+    return
