@@ -27,7 +27,7 @@ function Subscriptions() {
                 const name = subfeedits[subscription.subfeeditId]?.name
                 return (
                     <div key={subscription.id} className="list-item">
-                        <a href={`/${name}}`}>{name}</a>
+                        <a href={`/${name}`}>{name}</a>
                     </div>
                 )
             })}
