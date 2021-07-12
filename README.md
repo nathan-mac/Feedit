@@ -56,3 +56,4 @@ A user can use the search bar to query for posts containing the query in either 
 * General site design
 * Bug fix on removing subscriptions
 * Implementing comments
+* Voting
