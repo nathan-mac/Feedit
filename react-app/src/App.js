@@ -61,27 +61,24 @@ function App() {
         <Route path="/subfeedits" exact={true}>
           <SubfeeditList />
         </Route>
-        {currentUser ? <Route path="/:subfeeditName/new" exact={true}>
-            <NewPostForm />
-          </Route> : <Redirect to="/login" />
-        }
+        <ProtectedRoute path="/:subfeeditName/new" exact={true}>
+          <NewPostForm />
+        </ProtectedRoute>
         <Route path="/:subfeeditName" exact={true}>
           <Subfeedit />
         </Route>
-        {currentUser ? <Route path="/:subfeeditName/:postId/delete" exact={true}>
-            <DeletePost />
-          </Route> : <Redirect to="/login" />
-        }
-        {currentUser ? <Route path="/:subfeeditName/:postId/edit" exact={true}>
-            <EditPostForm />
-          </Route> : <Redirect to="/login" />
-        }
+        <ProtectedRoute path="/:subfeeditName/:postId/delete" exact={true}>
+          <DeletePost />
+        </ProtectedRoute>
+        <ProtectedRoute path="/:subfeeditName/:postId/edit" exact={true}>
+          <EditPostForm />
+        </ProtectedRoute>
         <Route path="/:subfeeditName/:postId" exact={true}>
           <Post />
         </Route>
-        <ProtectedRoute path="/" exact={true} >
+        <Route path="/" exact={true} >
           <Home />
-        </ProtectedRoute>
+        </Route>
       </Switch>
     </BrowserRouter>
   );

@@ -10,7 +10,7 @@ post_routes = Blueprint("posts", __name__)
 
 
 @post_routes.route("/")
-@login_required
+# @login_required
 def posts():
     posts = Post.query.order_by(Post.time.desc()).all()
     return {"posts": [post.to_dict() for post in posts]}

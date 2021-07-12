@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink, useHistory } from 'react-router-dom';
+import DemoButton from '../auth/DemoButton';
 import LogoutButton from '../auth/LogoutButton';
 import SearchBar from "../Search/index";
 import "./index.css";
@@ -13,42 +14,35 @@ const NavBar = () => {
   return (
     <nav>
       <div className="navbar-container">
-        <div className="navbar-element">
-          <NavLink to="/" exact={true} activeClassName="active">
-            Home
-          </NavLink>
+        <div onClick={() => history.push("/")} className="navbar-element">
+          <p>Home</p>
         </div>
-        <div className="navbar-element">
-          <NavLink to="/all" exact={true} activeClassName="active">
-            All
-          </NavLink>
+        <div onClick={() => history.push("/all")} className="navbar-element">
+          <p>All</p>
         </div>
-        <div className="navbar-element">
-          <NavLink to="/subfeedits" exact={true} activeClassName="active">
-            Subfeedits
-          </NavLink>
+        <div onClick={() => history.push("/subfeedits")} className="navbar-element">
+          <p>Subfeedits</p>
         </div>
-        <div className="navbar-element">
+        <div className="navbar-component">
           <SearchBar />
         </div>
         {!user ? <>
-          <div className="navbar-element">
-            <NavLink to="/login" exact={true} activeClassName="active">
-              Login
-            </NavLink>
+          <div onClick={() => history.push("/login")} className="navbar-element">
+            <p>Login</p>
           </div>
-          <div className="navbar-element">
-            <NavLink to="/sign-up" exact={true} activeClassName="active">
-              Sign Up
-            </NavLink>
+          <div className="navbar-component">
+            <DemoButton />
+          </div>
+          <div onClick={() => history.push("/sign-up")} className="navbar-element">
+            <p>Sign up</p>
           </div>
         </> : <>
-          <div className="navbar-element">
-            <NavLink to="/subscriptions" exact={true} activeClassName="active">
-              Subscriptions
-            </NavLink>
+          <div onClick={() => history.push("/subscriptions")} className="navbar-element">
+            <p>Subscriptions</p>
           </div>
-          <div className="navbar-element">
+          <div>
+          </div>
+          <div className="navbar-component">
             <LogoutButton />
           </div>
         </>}

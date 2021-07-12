@@ -20,7 +20,7 @@ const SearchBar = () => {
     const subfeedits = useSelector((state) => state.subfeedits.subfeedits);
 
     const filterPosts = (posts, query) => {
-        if (!query) {
+        if (!query || !posts) {
             return [];
         }
         return posts.filter((post) => {

@@ -7,7 +7,7 @@
 .search-list {
     position: absolute;
     background-color:#101010;
-    width: 258px;
+    width: 478px;
     margin: 0px;
     padding: 0px;
     border-radius: 5px;
@@ -29,10 +29,12 @@
 }
 
 .search-input {
-    width: 250px;
+    width: 470px;
+    height: 25px;
     margin: 5px 0px;
     background-color: black;
     color: white;
+    border-radius: 5px;
 }
 
 .search-results {

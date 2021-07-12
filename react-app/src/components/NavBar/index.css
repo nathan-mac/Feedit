@@ -1,0 +1,17 @@
+div.navbar-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 4fr 1fr 1fr 1fr;
+}
+
+div.navbar-element,
+div.navbar-component {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+div.navbar-element:hover {
+    transition: .2s;
+    color:ghostwhite;
+    background: #8F8F8F;
+}
