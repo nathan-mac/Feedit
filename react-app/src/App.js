@@ -16,6 +16,7 @@ import SubfeeditList from "./components/SubfeeditList/index";
 import NewPostForm from "./components/NewPost/index";
 import EditPostForm from "./components/EditPost/index";
 import DeletePost from "./components/DeletePost/index";
+import Footer from "./components/Footer/index";
 import { authenticate } from "./store/session";
 
 function App() {
@@ -78,6 +79,7 @@ function App() {
           <Home />
         </Route>
       </Switch>
+      <Footer />
     </BrowserRouter>
   );
 }

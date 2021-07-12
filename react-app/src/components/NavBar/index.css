@@ -1,6 +1,7 @@
 div.navbar-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 4fr 1fr 1fr 1fr;
+    background: #0F0F0F;
 }
 
 div.navbar-element,

@@ -1,0 +1,46 @@
+footer {
+    bottom: 0px;
+}
+
+div.footer-top {
+    display: flex;
+    flex-direction: column wrap;
+    justify-content: space-between;
+    align-items: top;
+    padding: 15px;
+    background: #0F0F0F;
+}
+
+div.footer-left {
+    width: 25%;
+    padding: 10px;
+}
+
+div.footer-middle {
+    width: 50%;
+    padding: 10px;
+}
+
+div.footer-right {
+    width: 25%;
+    padding: 10px;
+}
+
+footer h6 {
+    margin: 8px 0;
+    font-size: 16px;
+}
+
+footer p {
+    font-size: 16px;
+    line-height: 24px;
+}
+
+footer a {
+    padding: 10px;
+}
+
+footer a:hover {
+    transition: .5s;
+    color:lightgoldenrodyellow;
+}

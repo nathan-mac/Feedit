@@ -1,3 +1,13 @@
+div.all-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+div.subscription-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
 div.post-container {
     display: grid;
     grid-template-rows: 3fr 2fr 1fr 1fr;
@@ -45,4 +55,12 @@ div.post-author,
 div.post-time {
     font-size: 10pt;
     font-style: italic;
+}
+
+div.all-container img {
+    width: 100%;
+}
+
+div.subscription-container img {
+    width: 100%;
 }

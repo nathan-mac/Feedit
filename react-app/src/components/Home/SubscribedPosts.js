@@ -5,6 +5,7 @@ import { getAllPosts } from "../../store/posts";
 import { getAllSubfeedits } from "../../store/subfeedits";
 import { getUserSubscriptions } from "../../store/subscriptions";
 import { getAllUsers } from "../../store/users";
+import source from "../../images/steak.jpeg";
 import "./index.css";
 
 const Subscribed = () => {
@@ -30,28 +31,31 @@ const Subscribed = () => {
     });
 
     return (
-        <>
-            <h1>Posts For You</h1>
-            {subPosts.map((post) => {
-                const name = subfeedits[post.subfeeditId]?.name
-                return (
-                    <div key={post.id} onClick={() => history.push(`/${name}/${post.id}`)} className="post-container">
-                        <div className="post-title">
-                            <a href={`/${name}/${post.id}`}>{post.title}</a>
+        <div className="subscription-container">
+            <div>
+                <h1>Posts For You</h1>
+                {subPosts.map((post) => {
+                    const name = subfeedits[post.subfeeditId]?.name
+                    return (
+                        <div key={post.id} onClick={() => history.push(`/${name}/${post.id}`)} className="post-container">
+                            <div className="post-title">
+                                <a href={`/${name}/${post.id}`}>{post.title}</a>
+                            </div>
+                            <div className="post-subfeedit">
+                                <a href={`/${name}`}>{name}</a>
+                            </div>
+                            <div className="post-author">
+                                <p>Posted by {users[post.userId]?.username}</p>
+                            </div>
+                            <div className="post-time">
+                                <p>On {post.time}</p>
+                            </div>
                         </div>
-                        <div className="post-subfeedit">
-                            <a href={`/${name}`}>{name}</a>
-                        </div>
-                        <div className="post-author">
-                            <p>Posted by {users[post.userId]?.username}</p>
-                        </div>
-                        <div className="post-time">
-                            <p>On {post.time}</p>
-                        </div>
-                    </div>
-                )
-            })}
-        </>
+                    )
+                })}
+            </div>
+            <img src={source} alt="steak"></img>
+        </div>
     )
 }
 
