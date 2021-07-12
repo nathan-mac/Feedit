@@ -1,4 +1,4 @@
-# Robinhoop
+# Feedit
 
 
 Access the app [here](https://feedit-project.herokuapp.com/).
