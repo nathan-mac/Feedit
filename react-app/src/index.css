@@ -26,6 +26,6 @@ button {
 
 button:hover {
     transition: .2s;
-    color:ghostwhite;
+    color:lightgoldenrodyellow;
     background: #8F8F8F;
 }

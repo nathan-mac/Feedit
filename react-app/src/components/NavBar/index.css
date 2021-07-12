@@ -12,6 +12,10 @@ div.navbar-component {
 
 div.navbar-element:hover {
     transition: .2s;
-    color:ghostwhite;
+    color:lightgoldenrodyellow;
     background: #8F8F8F;
+}
+
+div.navbar-element p:hover {
+    cursor: default
 }

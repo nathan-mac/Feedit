@@ -5,6 +5,14 @@ from app import db
 subscription_routes = Blueprint("subscriptions", __name__)
 
 
+@subscription_routes.route("/")
+def all_subscriptions():
+    subscriptions = Subscription.query.all()
+    return {
+        "allSubscriptions": [sub.to_dict() for sub in subscriptions]
+    }
+
+
 @subscription_routes.route("/<int:id>")
 def subscriptions(id):
     subscriptions = Subscription.query.filter(Subscription.userId == id)
@@ -24,11 +32,9 @@ def add_subscription(userId, subId):
     return sub.to_dict()
 
 
-@subscription_routes.route("/remove/<int:userId>/<int:subId>")
-def remove_subscription(userId, subId):
-    sub = Subscription.query.filter(
-        Subscription.userId == userId and Subscription.subfeeditId == subId
-    )
+@subscription_routes.route("/remove/<int:subscriptionId>")
+def remove_subscription(subscriptionId):
+    sub = Subscription.query.get(subscriptionId)
     db.session.delete(sub)
     db.session.commit()
     return

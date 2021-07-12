@@ -4,12 +4,14 @@ import session from "./session";
 import posts from "./posts";
 import subfeedits from "./subfeedits";
 import subscriptions from "./subscriptions";
+import users from "./users";
 
 const rootReducer = combineReducers({
     session,
     posts,
     subfeedits,
-    subscriptions
+    subscriptions,
+    users
 });
 
 

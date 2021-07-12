@@ -1,0 +1,52 @@
+div.sub-container {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+}
+
+div.sub-post-container {
+    display: grid;
+    grid-template-rows: 3fr 2fr 1fr 1fr;
+    border: 1px solid whitesmoke;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 5px;
+}
+
+div.sub-post-container:hover {
+    background-color: #4F4F4F;
+}
+
+div.sub-post-container div {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0px;
+    padding-left: 10px;
+}
+
+div.sub-post-container div a {
+    margin: 5px 0px 0px 0px;
+    padding: 0px;
+}
+
+div.sub-post-container div p {
+    margin: 0px;
+    padding: 0px;
+}
+
+div.sub-post-title {
+    font-size: 24pt;
+    font-weight: bold;
+}
+
+div.sub-post-title a:hover,
+div.sub-post-subfeedit a:hover {
+    transition: .2s;
+    color:lightgoldenrodyellow;
+}
+
+div.sub-post-author,
+div.sub-post-time {
+    font-size: 10pt;
+    font-style: italic;
+}

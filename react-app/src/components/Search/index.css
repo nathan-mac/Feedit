@@ -37,10 +37,6 @@
     border-radius: 5px;
 }
 
-.search-results {
-    display: none;
-}
-
 .search-input:focus ~ .search-results {
     display: block;
 }
