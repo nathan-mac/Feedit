@@ -15,7 +15,7 @@ function Subfeedit() {
 
     const user = useSelector((state) => state.session.user);
 
-    const [subscribed, setSubscribed] = useState(false);
+    let subscribed;
 
     useEffect(() => {
         dispatch(getAllPosts())
@@ -41,20 +41,20 @@ function Subfeedit() {
     if (user ) {
         Object.values(subscriptions).forEach((sub) => {
             if (subfeedits[sub.subfeeditId]?.name === params.subfeeditName && sub.userId === user.id) {
-                setSubscribed(true);
+                subscribed = true;
                 subscriptionId = sub.id;
             }
         })
     }
 
     const onSubscribe = async (e) => {
-        setSubscribed(true);
+        subscribed = true;
         await dispatch(addUserSubscription(user.id, subId));
         return
     }
 
     const onUnsubscribe = async (e) => {
-        setSubscribed(false);
+        subscribed = false;
         await dispatch(removeUserSubscription(subscriptionId));
         return
     }
