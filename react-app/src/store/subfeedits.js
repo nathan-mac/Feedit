@@ -27,7 +27,8 @@ export const getOneSubfeedit = (id) => async (dispatch) => {
 
 const initialState = {
     subfeedits: {},
-    subfeedit: {}
+    subfeedit: {},
+    subscriptions: {}
 }
 
 export default function reducer(state = initialState, action) {
@@ -37,7 +38,8 @@ export default function reducer(state = initialState, action) {
         case ALL_SUBFEEDITS:
             newState = {
                 subfeedits: {},
-                subfeedit: state.subfeedit
+                subfeedit: state.subfeedit,
+                subscriptions: state.subscriptions
             }
             action.payload.subfeedits.forEach(subfeedit => {
                 newState.subfeedits[subfeedit.id] = subfeedit
@@ -46,7 +48,8 @@ export default function reducer(state = initialState, action) {
         case ONE_SUBFEEDIT:
             newState = {
                 subfeedits: state.subfeedits,
-                subfeedit: action.payload.subfeedit
+                subfeedit: action.payload.subfeedit,
+                subscriptions: state.subscriptions
             }
             return newState;
         default:

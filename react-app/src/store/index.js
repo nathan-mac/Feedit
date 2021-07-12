@@ -3,11 +3,13 @@ import thunk from "redux-thunk";
 import session from "./session";
 import posts from "./posts";
 import subfeedits from "./subfeedits";
+import subscriptions from "./subscriptions";
 
 const rootReducer = combineReducers({
     session,
     posts,
-    subfeedits
+    subfeedits,
+    subscriptions
 });
 
 

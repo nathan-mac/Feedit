@@ -1,1 +1,31 @@
-/* TODO Add site wide styles */
+body {
+    margin: 0px;
+    background-color: #2F2F2F;
+    color: white;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+a {
+    color: white;
+    font-style: none;
+    text-decoration: none;
+}
+
+a:visited {
+    font-style: none;
+}
+
+button {
+    background-color:#6F6F6F;
+    color: white;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 10px;
+    border-color: #2F2F2F;
+}
+
+button:hover {
+    transition: .2s;
+    color:ghostwhite;
+    background: #8F8F8F;
+}

@@ -134,6 +134,7 @@ export default function reducer(state = initialState, action) {
                 posts: state.posts,
                 post: state.post
             }
+            delete newState.posts[action.payload.post?.id]
             return newState
         default:
             return state;

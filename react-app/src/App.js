@@ -10,6 +10,7 @@ import User from "./components/User/index";
 import All from "./components/All/index";
 import Home from "./components/Home/index";
 import Post from "./components/Post/index";
+import Subscriptions from "./components/Subscriptions/index";
 import Subfeedit from "./components/Subfeedit/index";
 import SubfeeditList from "./components/SubfeeditList/index";
 import NewPostForm from "./components/NewPost/index";
@@ -53,6 +54,9 @@ function App() {
         </ProtectedRoute>
         <Route path="/all" exact={true}>
           <All />
+        </Route>
+        <Route path="/subscriptions" exact={true}>
+          <Subscriptions />
         </Route>
         <Route path="/subfeedits" exact={true}>
           <SubfeeditList />
