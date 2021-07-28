@@ -10,7 +10,6 @@ post_routes = Blueprint("posts", __name__)
 
 
 @post_routes.route("/")
-# @login_required
 def posts():
     posts = Post.query.order_by(Post.time.desc()).all()
     return {"posts": [post.to_dict() for post in posts]}
@@ -49,9 +48,10 @@ def edit_post(id):
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         post = Post.query.get(id)
-        db.session.delete(post)
+        post.title = form.data["title"]
+        post.content = form.data["content"]
         db.session.commit()
-        return
+        return post.to_dict()
     return {"errors": validation_errors_to_error_messages(form.errors)}, 401
 
 
@@ -60,4 +60,4 @@ def delete_post(id):
     post = Post.query.get(id)
     db.session.delete(post)
     db.session.commit()
-    return
+    return None

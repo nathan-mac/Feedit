@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { getAllPosts } from "../../store/posts";
@@ -48,12 +48,14 @@ function Subfeedit() {
     }
 
     const onSubscribe = async (e) => {
+        e.preventDefault();
         subscribed = true;
         await dispatch(addUserSubscription(user.id, subId));
         return
     }
 
     const onUnsubscribe = async (e) => {
+        e.preventDefault();
         subscribed = false;
         await dispatch(removeUserSubscription(subscriptionId));
         return
@@ -65,7 +67,7 @@ function Subfeedit() {
             <div className="sub-container">
                 <div className="sub-posts">
                     {Object.values(posts)?.map((post) => {
-                        const name = subfeedits[post.subfeeditId]?.name;
+                        const name = subfeedits[post?.subfeeditId]?.name;
                         const matched = name === params.subfeeditName;
                         return (
                             matched ?

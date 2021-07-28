@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { signUp } from '../../store/session';
 import source from "../../images/bowl.jpeg";
 import "./index.css";
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
-  const user = useSelector(state => state.session.user)
+  const history = useHistory();
+  const user = useSelector(state => state.session.user);
+  const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -15,10 +17,11 @@ const SignUpForm = () => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
-    if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
-      return data;
-    }
+    const data = await dispatch(signUp(username, email, password, repeatPassword));
+    if (data.errors) {
+      setErrors(data.errors);
+    };
+    return data;
   };
 
   const updateUsername = (e) => {
@@ -38,50 +41,72 @@ const SignUpForm = () => {
   };
 
   if (user) {
-    return <Redirect to="/" />;
+    return history.push("/");
+  }
+
+  const formatError = (err) => {
+    const [name, msg] = err.split(" : ");
+    const splitName = name.split("");
+    splitName[0] = splitName[0].toUpperCase();
+    const newName = splitName.join("");
+    return `${newName} : ${msg}`;
   }
 
   return (
     <div className="auth-container">
       <form onSubmit={onSignUp}>
-        <div>
-          <label>User Name</label>
+        <div className="auth-form-element error-list">
+          {errors.map((error) => (
+            <div>{formatError(error)}</div>
+            ))}
+        </div>
+        <div className="auth-form-element">
+          <label>Username</label>
           <input
-            type="text"
             name="username"
-            onChange={updateUsername}
+            type="text"
+            placeholder="Username"
             value={username}
+            required={true}
+            onChange={updateUsername}
             ></input>
         </div>
-        <div>
+        <div className="auth-form-element">
           <label>Email</label>
           <input
-            type="text"
             name="email"
-            onChange={updateEmail}
+            type="text"
+            placeholder="Email"
             value={email}
+            required={true}
+            onChange={updateEmail}
             ></input>
         </div>
-        <div>
+        <div className="auth-form-element">
           <label>Password</label>
           <input
-            type="password"
             name="password"
-            onChange={updatePassword}
+            type="password"
+            placeholder="Password"
             value={password}
+            required={true}
+            onChange={updatePassword}
             ></input>
         </div>
-        <div>
-          <label>Repeat Password</label>
+        <div className="auth-form-element">
+          <label>Confirm Password</label>
           <input
-            type="password"
             name="repeat_password"
-            onChange={updateRepeatPassword}
+            type="password"
+            placeholder="Confirm Password"
             value={repeatPassword}
             required={true}
+            onChange={updateRepeatPassword}
             ></input>
         </div>
-        <button type="submit">Sign Up</button>
+        <div className="button-container">
+          <button type="submit">Sign Up</button>
+        </div>
       </form>
       <img src={source} alt="bowl"></img>
     </div>

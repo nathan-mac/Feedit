@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useParams } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import { editPost } from '../../store/posts';
 import { getOnePost } from "../../store/posts";
+import source from "../../images/bowl.jpeg";
+import "./index.css";
 
 const EditPostForm = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
     const user = useSelector(state => state.session.user);
     const [title, setTitle] = useState("")
     const [content, setContent] = useState("")
     const [subfeeditId, setSubfeeditId] = useState("");
     const params = useParams();
-
-    console.log(params)
 
     useEffect(() => {
         dispatch(getOnePost(parseInt(params.postId)))
@@ -28,8 +29,8 @@ const EditPostForm = () => {
 
     const onEdit = async (e) => {
         e.preventDefault();
-        await dispatch(editPost(title, content, subfeeditId));
-        return <Redirect to="/" />
+        await dispatch(editPost(title, content, subfeeditId, params.postId));
+        return history.push(`/${params.subfeeditName}/${params.postId}`);
     }
 
     const updateTitle = (e) => {
@@ -41,38 +42,42 @@ const EditPostForm = () => {
     };
 
     if (!user || !user.id === post.userId) {
-        return <Redirect to="/" />;
+        return history.push(`/${params.subfeeditName}/${params.postId}`);
     }
 
     return (
-            <div className="container">
-                <form onSubmit={onEdit} method="POST">
-                    <div className="greeting">
-                        <h1>Edit Post</h1>
-                    </div>
-                    <div>
-                        <label>Title</label>
-                        <input
-                            type="text"
-                            name="title"
-                            placeholder={title}
-                            onChange={updateTitle}
-                            value={title}
-                        ></input>
-                    </div>
-                    <div>
-                        <label>Content</label>
-                        <input
-                            type="text"
-                            name="content"
-                            placeholder={content}
-                            onChange={updateContent}
-                            value={content}
-                        ></input>
-                    </div>
-                    <button type="submit">Submit</button>
-                </form>
-            </div>
+        <div className="edit-container">
+            <form onSubmit={onEdit} method="POST">
+                <div className="greeting">
+                    <h1>Edit Post</h1>
+                </div>
+                <div className="form-element">
+                    <label>Title</label>
+                    <input
+                        type="text"
+                        name="title"
+                        placeholder={title}
+                        required={true}
+                        onChange={updateTitle}
+                        value={title}
+                    ></input>
+                </div>
+                <div className="form-element">
+                    <label>Content</label>
+                    <textarea
+                        name="content"
+                        placeholder={content}
+                        onChange={updateContent}
+                        value={content}
+                    ></textarea>
+                </div>
+                <div className="button-container">
+                    <button type="submit">Save</button>
+                    <button onClick={() => {history.push(`/${params.subfeeditName}/${params.postId}`)}}>Cancel</button>
+                </div>
+            </form>
+            <img src={source} alt="bowl"></img>
+        </div>
     );
 };
 

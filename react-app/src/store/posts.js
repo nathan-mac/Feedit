@@ -65,8 +65,8 @@ export const createPost = (title, content, subfeeditId) => async (dispatch) => {
     dispatch(newPost(data))
 }
 
-export const editPost = (title, content, subfeeditId) => async (dispatch) => {
-    const response = await fetch("/api/posts/edit-post", {
+export const editPost = (title, content, subfeeditId, postId) => async (dispatch) => {
+    const response = await fetch(`/api/posts/edit-post/${postId}`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

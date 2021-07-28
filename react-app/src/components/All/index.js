@@ -27,7 +27,7 @@ const All = () => {
             <div>
                 <h1>All Posts</h1>
                 {Object.values(posts)?.map((post) => {
-                    const name = subfeedits[post.subfeeditId]?.name
+                    const name = subfeedits[post?.subfeeditId]?.name
                     return (
                         <div key={post.id} onClick={() => history.push(`/${name}/${post.id}`)} className="post-container">
                             <div className="post-title">

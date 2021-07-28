@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { Redirect, useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { deletePost } from "../../store/posts";
 
 const DeletePost = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
     const params = useParams();
 
     useEffect(() => {
@@ -12,7 +13,9 @@ const DeletePost = () => {
     }, [dispatch, params])
 
     return (
-        <Redirect to="/" />
+        <>
+            {history.push(`/${params.subfeeditName}`)}
+        </>
     )
 }
 
