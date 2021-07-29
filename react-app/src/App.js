@@ -54,12 +54,12 @@ function App() {
         <Route path="/all" exact={true}>
           <All />
         </Route>
-        <Route path="/subscriptions" exact={true}>
-          <Subscriptions />
-        </Route>
         <Route path="/subfeedits" exact={true}>
           <SubfeeditList />
         </Route>
+        <ProtectedRoute path="/subscriptions" exact={true}>
+          <Subscriptions />
+        </ProtectedRoute>
         <ProtectedRoute path="/:subfeeditName/new" exact={true}>
           <NewPostForm />
         </ProtectedRoute>
