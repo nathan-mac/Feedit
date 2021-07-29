@@ -13,7 +13,7 @@ def all_subscriptions():
     }
 
 
-@subscription_routes.route("/<int:id>")
+@subscription_routes.route("/<int:id>/")
 def subscriptions(id):
     subscriptions = Subscription.query.filter(Subscription.userId == id)
     return {
@@ -21,7 +21,7 @@ def subscriptions(id):
     }
 
 
-@subscription_routes.route("/add/<int:userId>/<int:subId>")
+@subscription_routes.route("/add/<int:userId>/<int:subId>/")
 def add_subscription(userId, subId):
     sub = Subscription(
         userId=userId,
@@ -32,7 +32,7 @@ def add_subscription(userId, subId):
     return sub.to_dict()
 
 
-@subscription_routes.route("/remove/<int:subscriptionId>")
+@subscription_routes.route("/remove/<int:subscriptionId>/")
 def remove_subscription(subscriptionId):
     sub = Subscription.query.get(subscriptionId)
     db.session.delete(sub)

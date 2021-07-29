@@ -12,7 +12,7 @@ def subfeedits():
     }
 
 
-@subfeedit_routes.route("/<string:name>")
+@subfeedit_routes.route("/<string:name>/")
 def subfeedit(name):
     subfeedit = Subfeedit.query.filter(Subfeedit.name == name)
     return {
