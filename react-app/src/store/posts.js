@@ -37,14 +37,14 @@ export const getAllPosts = () => async (dispatch) => {
 }
 
 export const getOnePost = (id) => async (dispatch) => {
-    const response = await fetch(`/api/posts/${id}`);
+    const response = await fetch(`/api/posts/${id}/`);
     const data = await response.json();
     dispatch(onePost(data));
     return data;
 }
 
 export const createPost = (title, content, subfeeditId) => async (dispatch) => {
-    const response = await fetch("/api/posts/new-post", {
+    const response = await fetch("/api/posts/new-post/", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -66,7 +66,7 @@ export const createPost = (title, content, subfeeditId) => async (dispatch) => {
 }
 
 export const editPost = (title, content, subfeeditId, postId) => async (dispatch) => {
-    const response = await fetch(`/api/posts/edit-post/${postId}`, {
+    const response = await fetch(`/api/posts/edit-post/${postId}/`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -88,7 +88,7 @@ export const editPost = (title, content, subfeeditId, postId) => async (dispatch
 }
 
 export const deletePost = (id) => async (dispatch) => {
-    const response = await fetch(`/api/posts/delete/${id}`)
+    const response = await fetch(`/api/posts/delete/${id}/`)
     const data = await response.json();
     dispatch(remove(data));
     return data;

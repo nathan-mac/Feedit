@@ -24,28 +24,28 @@ const removeSubscription = (subscription) => ({
 })
 
 export const getAllSubscriptions = () => async (dispatch) => {
-    const response = await fetch("/api/subscriptions");
+    const response = await fetch("/api/subscriptions/");
     const data = await response.json();
     dispatch(allSubscriptions(data));
     return data;
 }
 
 export const getUserSubscriptions = (userId) => async (dispatch) => {
-    const response = await fetch(`/api/subscriptions/${userId}`);
+    const response = await fetch(`/api/subscriptions/${userId}/`);
     const data = await response.json();
     dispatch(userSubscriptions(data));
     return data;
 }
 
 export const addUserSubscription = (userId, subId) => async (dispatch) => {
-    const response = await fetch(`/api/subscriptions/add/${userId}/${subId}`);
+    const response = await fetch(`/api/subscriptions/add/${userId}/${subId}/`);
     const data = await response.json();
     dispatch(addSubscription(data));
     return data;
 }
 
 export const removeUserSubscription = (subscriptionId) => async (dispatch) => {
-    const response = await fetch(`/api/subscriptions/remove/${subscriptionId}`);
+    const response = await fetch(`/api/subscriptions/remove/${subscriptionId}/`);
     const data = await response.json();
     dispatch(removeSubscription(data));
     return data;

@@ -12,14 +12,14 @@ const oneSubfeedit = (subfeedit) => ({
 })
 
 export const getAllSubfeedits = () => async (dispatch) => {
-    const response = await fetch("/api/subfeedits")
+    const response = await fetch("/api/subfeedits/")
     const data = await response.json()
     dispatch(allSubfeedits(data))
     return data;
 }
 
 export const getOneSubfeedit = (id) => async (dispatch) => {
-    const response = await fetch(`/api/subfeedits/${id}`);
+    const response = await fetch(`/api/subfeedits/${id}/`);
     const data = await response.json();
     dispatch(oneSubfeedit(data));
     return data;

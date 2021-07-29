@@ -15,13 +15,13 @@ def posts():
     return {"posts": [post.to_dict() for post in posts]}
 
 
-@post_routes.route("/<int:id>")
+@post_routes.route("/<int:id>/")
 def post(id):
     post = Post.query.get(id)
     return {"post": post.to_dict()}
 
 
-@post_routes.route("/new-post", methods=["POST"])
+@post_routes.route("/new-post/", methods=["POST"])
 @login_required
 def new_post():
     user = User.query.get(current_user.id)
@@ -41,7 +41,7 @@ def new_post():
     return {"errors": validation_errors_to_error_messages(form.errors)}, 401
 
 
-@post_routes.route("/edit-post/<int:id>", methods=["POST"])
+@post_routes.route("/edit-post/<int:id>/", methods=["POST"])
 @login_required
 def edit_post(id):
     form = PostForm()
@@ -55,7 +55,7 @@ def edit_post(id):
     return {"errors": validation_errors_to_error_messages(form.errors)}, 401
 
 
-@post_routes.route("/delete/<int:id>")
+@post_routes.route("/delete/<int:id>/")
 def delete_post(id):
     post = Post.query.get(id)
     db.session.delete(post)
