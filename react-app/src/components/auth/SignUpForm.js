@@ -41,7 +41,11 @@ const SignUpForm = () => {
   };
 
   if (user) {
-    return history.push("/");
+    return (
+      <>
+        {history.push("/")}
+      </>
+    )
   }
 
   const formatError = (err) => {
