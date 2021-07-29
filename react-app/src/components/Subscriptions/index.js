@@ -15,7 +15,7 @@ function Subscriptions() {
     useEffect(() => {
         dispatch(getAllSubfeedits())
         dispatch(getUserSubscriptions(user.id))
-    }, [dispatch, user.id])
+    }, [dispatch, user])
 
     const subfeedits = useSelector((state) => state.subfeedits.subfeedits);
     const subscriptions = useSelector((state) => state.subscriptions.subscriptions);
