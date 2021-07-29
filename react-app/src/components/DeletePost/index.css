@@ -1,0 +1,47 @@
+div.post-info {
+    display: grid;
+    grid-template-rows: 2fr 1fr 1fr 1fr 7fr;
+    border: 1px solid whitesmoke;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 5px;
+}
+
+div.post-info:hover {
+    background-color: #3F3F3F;
+}
+
+div.post-title,
+div.post-subfeedit,
+div.post-author,
+div.post-time {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0px;
+    padding-left: 10px;
+}
+
+div.post-content {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 0px;
+    margin-top: 15px;
+    padding-left: 10px;
+}
+
+div.post-info div a {
+    margin: 5px 0px 0px 0px;
+    padding: 0px;
+}
+
+div.post-info div p {
+    margin: 0px;
+    padding: 0px;
+}
+
+div.delete-confirm p {
+    margin-left: 2%;
+    padding: 10px;
+}
