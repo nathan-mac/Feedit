@@ -98,11 +98,11 @@ function Subfeedit() {
                     {user ?
                         <div className="sub-subscribe">
                             {!subscribed ?
-                                <button onClick={(e) => onSubscribe()} className="subscribe-button">
+                                <button onClick={(e) => onSubscribe(e)} className="subscribe-button">
                                     Subscribe
                                 </button>
                                 :
-                                <button onClick={(e) => onUnsubscribe()} className="unsubscribe-button">
+                                <button onClick={(e) => onUnsubscribe(e)} className="unsubscribe-button">
                                     Unsubscribe
                                 </button>
                             }
