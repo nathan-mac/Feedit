@@ -18,18 +18,8 @@ function Post() {
 
     const user = useSelector((state) => state.session.user);
     const post = useSelector((state) => state.posts.post);
-    const postId = useSelector((state) => state.posts.post.id);
     const users = useSelector((state) => state.users.users);
     const name = params.subfeeditName;
-
-    console.log("POSTHERALKEJGALKEG", postId)
-    if (!postId) {
-        return (
-            <>
-                { history.push(`/${params.subfeeditName}`) }
-            </>
-        )
-    }
 
     return (
         <div className="post-info-container">
