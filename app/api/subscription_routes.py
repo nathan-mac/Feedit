@@ -37,4 +37,4 @@ def remove_subscription(subscriptionId):
     sub = Subscription.query.get(subscriptionId)
     db.session.delete(sub)
     db.session.commit()
-    return
+    return sub.to_dict()

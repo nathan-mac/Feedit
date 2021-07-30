@@ -24,9 +24,9 @@ function Subscriptions() {
         <div className="list-container">
             <h1>Your Subscriptions</h1>
             {Object.values(subscriptions)?.map((subscription) => {
-                const name = subfeedits[subscription.subfeeditId]?.name
+                const name = subfeedits[subscription?.subfeeditId]?.name
                 return (
-                    <div key={subscription.id} className="list-item">
+                    <div key={subscription?.id} className="list-item">
                         <a href={`/${name}`}>{name}</a>
                     </div>
                 )
