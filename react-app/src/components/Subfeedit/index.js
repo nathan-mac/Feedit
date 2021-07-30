@@ -41,7 +41,7 @@ function Subfeedit() {
     useEffect(() => {
         if (user) {
             Object.values(subscriptions).forEach((sub) => {
-                if (subfeedits[sub.subfeeditId]?.name === params.subfeeditName && sub.userId === user.id && subscribed === false) {
+                if (subfeedits[sub.subfeeditId]?.name === params.subfeeditName && sub.userId === user.id) {
                     setSubscribed(true);
                     setButtonText("Unsubscribe");
                     setSubscriptionId(sub.id);
