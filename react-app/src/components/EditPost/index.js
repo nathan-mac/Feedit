@@ -67,7 +67,6 @@ const EditPostForm = () => {
                     <textarea
                         name="content"
                         placeholder={content}
-                        required={true}
                         onChange={updateContent}
                         value={content}
                     ></textarea>

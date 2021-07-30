@@ -91,7 +91,7 @@ function Subfeedit() {
                                         <p>On {post.time}</p>
                                     </div>
                                 </div>
-                            : <div key={post.id}></div>
+                            : <div key={post?.id}></div>
                         )
                     })}
                 </div>
