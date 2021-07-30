@@ -25,7 +25,7 @@ const Subscribed = () => {
     const subfeedits = useSelector((state) => state.subfeedits.subfeedits);
     const users = useSelector((state) => state.users.users);
     const subscriptions = useSelector((state) => state.subscriptions.subscriptions);
-    const subIds = Object.values(subscriptions)?.map((sub) => sub.subfeeditId);
+    const subIds = Object.values(subscriptions)?.map((sub) => sub?.subfeeditId);
     const subPosts = Object.values(posts)?.filter((post) => {
         return subIds.includes(post.subfeeditId)
     });
