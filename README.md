@@ -45,6 +45,8 @@ Posts can be viewed through different feeds, using subfeedits as categories.
 
 Posts can be created, edited, or deleted by an authorized logged in user.
 
+A logged in user can manage their personal feed by subscribing or unsubscribing to subfeedits.
+
 Data fetched from the API routes are used to populate feeds, manipulate posts, and work with subscriptions to customize said feeds and posts.
 
 A user can use the search bar to query for posts containing the query in either the title or the content of the post.
@@ -54,6 +56,5 @@ A user can use the search bar to query for posts containing the query in either 
 
 
 * General site design
-* Bug fix on removing subscriptions
 * Implementing comments
 * Voting
