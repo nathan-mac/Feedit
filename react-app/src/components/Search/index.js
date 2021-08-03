@@ -62,6 +62,7 @@ const SearchBar = () => {
                             const name = subfeedits[post.subfeeditId]?.name;
                             return <a key={post.id} href={`/${name}/${post.id}`} className="search-result">
                                 <p>{post.title}</p>
+                                <p>{name}</p>
                             </a>
                         })}
                     </ul>
