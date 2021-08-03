@@ -10,7 +10,7 @@ const SearchPage = () => {
     const history = useHistory();
     const dispatch = useDispatch();
     const params = useParams();
-    const query = params.query;
+    const query = params.query.slice(3);
 
     useEffect(() => {
         dispatch(getAllPosts())
