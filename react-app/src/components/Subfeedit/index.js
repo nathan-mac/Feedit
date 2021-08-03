@@ -52,13 +52,11 @@ function Subfeedit() {
 
     const toggleButton = async () => {
         if (subscribed) {
-            console.log("UNSUBSCRIBING");
             setSubscribed(false);
             setButtonText("Subscribe");
             await dispatch(removeUserSubscription(subscriptionId));
             await dispatch(getAllSubscriptions())
         } else {
-            console.log("SUBSCRIBING");
             setSubscribed(true);
             setButtonText("Unsubscribe");
             const returnedData = await dispatch(addUserSubscription(user.id, subId));

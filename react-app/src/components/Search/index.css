@@ -17,11 +17,11 @@
 
 .search-result {
     height: 40px;
-    padding-left: 5px;
+    padding: 0px 5px;
     border-top: 1px white solid;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-between;
 }
 
 .search-result > p {
