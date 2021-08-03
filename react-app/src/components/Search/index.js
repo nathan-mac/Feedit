@@ -23,6 +23,7 @@ const SearchBar = () => {
         if (!query || !posts) {
             return [];
         }
+        console.log(posts)
         return posts.filter((post) => {
             const postTitle = post.title.toLowerCase();
             const postContent = post.content.toLowerCase();
@@ -35,9 +36,9 @@ const SearchBar = () => {
     const [searchQuery, setSearchQuery] = useState(query || "");
     const filteredPosts = filterPosts(posts, searchQuery);
 
-    const onSubmit = e => {
-        history.push(`?s=${searchQuery}`)
+    const onSubmit = (e) => {
         e.preventDefault()
+        history.push(`/search/?s=${searchQuery}`)
     };
 
     return (
@@ -62,6 +63,7 @@ const SearchBar = () => {
                             const name = subfeedits[post.subfeeditId]?.name;
                             return <a key={post.id} href={`/${name}/${post.id}`} className="search-result">
                                 <p>{post.title}</p>
+                                <p>{name}</p>
                             </a>
                         })}
                     </ul>
@@ -70,4 +72,5 @@ const SearchBar = () => {
         </div>
     )
 }
+
 export default SearchBar;

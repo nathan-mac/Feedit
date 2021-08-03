@@ -10,6 +10,7 @@ import User from "./components/User/index";
 import All from "./components/All/index";
 import Home from "./components/Home/index";
 import Post from "./components/Post/index";
+import SearchPage from "./components/SearchPage";
 import Subscriptions from "./components/Subscriptions/index";
 import Subfeedit from "./components/Subfeedit/index";
 import SubfeeditList from "./components/SubfeeditList/index";
@@ -44,6 +45,9 @@ function App() {
         </Route>
         <Route path="/sign-up" exact={true}>
           <SignUpForm />
+        </Route>
+        <Route path="/search/:query" exact={true}>
+          <SearchPage />
         </Route>
         <ProtectedRoute path="/users" exact={true}>
           <UsersList/>
